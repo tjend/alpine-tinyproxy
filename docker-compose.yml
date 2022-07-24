@@ -1,0 +1,14 @@
+# docker-compose.yml for testing
+# run 'docker compose up'
+# and test like 'https_proxy=localhost:8888 curl -v https://icanhazip.com'
+version: '3.8'
+
+services:
+  alpine-tinyproxy:
+    build:
+      args:
+        - TARGETARCH=amd64
+      context: .
+    image: alpine-tinyproxy:latest
+    ports:
+      - 8888:8888
